@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outer Realms & Watch Towers</title>
+<style>
+/* ========== OUTER REALMS + WATCH TOWERS ========== */
+#outer-realms,
+#watch-towers,
+#outer-realms *,
+#watch-towers * {
+  box-sizing: border-box !important;
+}
+
+#outer-realms {
+  position: fixed !important;
+  top: 42% !important;
+  left: 28px !important;
+  right: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 36px !important;
+  pointer-events: none !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+#watch-towers {
+  position: fixed !important;
+  top: 58% !important;
+  right: 28px !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 36px !important;
+  pointer-events: none !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.or-title, .wt-title {
+  pointer-events: none !important;
+  font-size: 12px !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 190, 90, 0.85) !important;
+  margin: 0 0 8px 0 !important;
+  text-shadow: 0 0 14px rgba(255, 107, 26, 0.5) !important;
+  white-space: nowrap !important;
+  background: transparent !important;
+}
+
+.or-spine, .wt-spine {
+  position: absolute !important;
+  top: 38px !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  width: 2px !important;
+  transform: translateX(-50%) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.or-spine svg, .wt-spine svg {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: visible !important;
+}
+
+.or-spine path, .wt-spine path {
+  fill: none !important;
+  stroke: url(#fireGrad) !important;
+  stroke-width: 2.5 !important;
+  stroke-linecap: round !important;
+  filter: drop-shadow(0 0 6px #ff6b1a) drop-shadow(0 0 12px #ff3d00) !important;
+  stroke-dasharray: 6 10 !important;
+  animation: dashFlow 2.8s linear infinite !important;
+}
+
+@keyframes dashFlow {
+  to { stroke-dashoffset: -32; }
+}
+
+.orb-wrap {
+  position: relative !important;
+  width: 78px !important;
+  height: 78px !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 2 !important;
+  display: block !important;
+  text-decoration: none !important;
+}
+
+.orb {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  background: #0a0a0a !important;
+  box-shadow: 0 0 18px rgba(255, 107, 26, 0.7),
+              0 0 40px rgba(255, 61, 0, 0.35),
+              inset 0 0 20px rgba(0,0,0,0.6) !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              filter 0.35s ease !important;
+}
+
+.orb video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 50% !important;
+}
+
+.fire-ring {
+  position: absolute !important;
+  inset: -10px !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #ff6b1a 40deg,
+    #ff3d00 80deg,
+    #ffaa00 120deg,
+    transparent 160deg,
+    transparent 200deg,
+    #ff6b1a 240deg,
+    #ff3d00 280deg,
+    transparent 320deg,
+    transparent 360deg
+  ) !important;
+  mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 5px)) !important;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 5px)) !important;
+  animation: fireSpin 4s linear infinite !important;
+  opacity: 0.85 !important;
+  filter: blur(0.6px) !important;
+}
+
+.fire-ring::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 4px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0deg,
+    #ffaa33 50deg,
+    transparent 100deg,
+    transparent 180deg,
+    #ff6b1a 230deg,
+    transparent 280deg
+  ) !important;
+  mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 3px)) !important;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 3px)) !important;
+  animation: fireSpin 2.6s linear infinite reverse !important;
+  opacity: 0.7 !important;
+}
+
+@keyframes fireSpin {
+  to { transform: rotate(360deg); }
+}
+
+.orb-wrap::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: -18px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle, rgba(255, 90, 20, 0.25) 0%, transparent 70%) !important;
+  opacity: 0.6 !important;
+  z-index: 1 !important;
+  animation: flare 2.8s ease-in-out infinite alternate !important;
+  pointer-events: none !important;
+}
+
+@keyframes flare {
+  from { transform: scale(0.92); opacity: 0.4; }
+  to   { transform: scale(1.08); opacity: 0.75; }
+}
+
+.orb-wrap:hover .orb,
+.orb-wrap.active .orb {
+  transform: scale(1.18) !important;
+  box-shadow: 0 0 28px rgba(255, 120, 30, 0.9),
+              0 0 55px rgba(255, 60, 0, 0.5),
+              inset 0 0 25px rgba(0,0,0,0.5) !important;
+  filter: brightness(1.15) saturate(1.2) !important;
+}
+
+.orb-wrap:hover .fire-ring,
+.orb-wrap.active .fire-ring {
+  opacity: 1 !important;
+  filter: blur(0.3px) brightness(1.3) !important;
+  animation-duration: 2.2s !important;
+}
+
+.orb-label {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: rgba(10, 6, 4, 0.95) !important;
+  border: 1px solid rgba(255, 160, 60, 0.55) !important;
+  color: #ffe0a8 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 9px 14px !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+  box-shadow: 0 0 24px rgba(255, 90, 0, 0.35) !important;
+  z-index: 10 !important;
+}
+
+#outer-realms .orb-label {
+  left: calc(100% + 18px) !important;
+  transform: translateY(-50%) translateX(-8px) !important;
+}
+
+#watch-towers .orb-label {
+  right: calc(100% + 18px) !important;
+  transform: translateY(-50%) translateX(8px) !important;
+}
+
+.orb-wrap:hover .orb-label,
+.orb-wrap.active .orb-label {
+  opacity: 1 !important;
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+/* Hide on small screens */
+@media (max-width: 1024px) {
+  #outer-realms,
+  #watch-towers {
+    display: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: #111;
+  min-height: 100vh;
+}
+</style>
+</head>
+<body>
+
+<!-- OUTER REALMS -->
+<div id="outer-realms" aria-label="Outer Realms quick links">
+  <div class="or-title">OUTER REALMS</div>
+  <div class="or-spine">
+    <svg preserveAspectRatio="none" viewBox="0 0 4 400">
+      <defs>
+        <linearGradient id="fireGrad" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#ffaa33"/>
+          <stop offset="30%" stop-color="#ff6b1a"/>
+          <stop offset="70%" stop-color="#ff3d00"/>
+          <stop offset="100%" stop-color="#ffaa33"/>
+        </linearGradient>
+      </defs>
+      <path d="M2 0 V400"/>
+    </svg>
+  </div>
+
+  <!-- THE OUTSIDE MIND — FIXED VIDEO -->
+  <a class="orb-wrap" href="https://danceknightprime.blogspot.com/p/the-outside-mind.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://cdn.jsdelivr.net/gh/danceknightxd/OUTERREALMSOUTSIDEMIND@main/generated_video_clean.mp4"></video>
+    </div>
+    <span class="orb-label">THE OUTSIDE MIND</span>
+  </a>
+
+  <a class="orb-wrap" href="https://emdexter.blogspot.com/p/technology-corner.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://69acff72.technology-corner-widget.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">TECHNOLOGY CORNER</span>
+  </a>
+
+  <a class="orb-wrap" href="https://emdexter.blogspot.com/p/ai-corner.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://4d8f73b9.ai-corner-widget.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">AI CORNER</span>
+  </a>
+
+  <a class="orb-wrap" href="https://emdexter.blogspot.com/p/what-happens-next.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://0399852e.what-happens-next-widget.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">WHAT HAPPENS NEXT</span>
+  </a>
+
+  <a class="orb-wrap" href="https://emdexter.blogspot.com/p/the-floor.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://cdn.jsdelivr.net/gh/danceknightxd/THE-FLOOR@main/THE%20FLOOR_clean.mp4"></video>
+    </div>
+    <span class="orb-label">THE FLOOR</span>
+  </a>
+</div>
+
+<!-- WATCH TOWERS -->
+<div id="watch-towers" aria-label="Watch Towers quick links">
+  <div class="wt-title">WATCH TOWERS</div>
+  <div class="wt-spine">
+    <svg preserveAspectRatio="none" viewBox="0 0 4 400">
+      <defs>
+        <linearGradient id="fireGrad2" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#ffaa33"/>
+          <stop offset="30%" stop-color="#ff6b1a"/>
+          <stop offset="70%" stop-color="#ff3d00"/>
+          <stop offset="100%" stop-color="#ffaa33"/>
+        </linearGradient>
+      </defs>
+      <path d="M2 0 V400" stroke="url(#fireGrad2)"/>
+    </svg>
+  </div>
+
+  <a class="orb-wrap" href="https://projectdlab.blogspot.com/p/her-world.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://09ecba87.her-world.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">HER WORLD</span>
+  </a>
+
+  <a class="orb-wrap" href="https://projectdlab.blogspot.com/p/his-world.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://150d9ac2.his-world.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">HIS WORLD</span>
+  </a>
+
+  <a class="orb-wrap" href="https://projectdlab.blogspot.com/p/relationships.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://9eeca629.relationships-8ce.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">RELATIONSHIPS CORNER</span>
+  </a>
+
+  <a class="orb-wrap" href="https://projectdlab.blogspot.com/p/self-improvement.html" rel="noopener" target="_blank">
+    <div class="fire-ring"></div>
+    <div class="orb">
+      <video autoplay loop muted playsinline preload="metadata"
+             src="https://1a617fe6.self-improvement-widget.pages.dev/video.mp4"></video>
+    </div>
+    <span class="orb-label">SELF IMPROVEMENT CORNER</span>
+  </a>
+</div>
+
+<script>
+(function() {
+  var videos = document.querySelectorAll('video');
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].muted = true;
+    videos[i].playsInline = true;
+    videos[i].loop = true;
+    videos[i].play().catch(function(){});
+  }
+
+  var orbs = document.querySelectorAll('.orb-wrap');
+  for (var j = 0; j < orbs.length; j++) {
+    (function(orb) {
+      orb.addEventListener('pointerenter', function() { orb.classList.add('active'); });
+      orb.addEventListener('pointerleave', function() { orb.classList.remove('active'); });
+    })(orbs[j]);
+  }
+})();
+</script>
+
+</body>
+</html>
